@@ -7,6 +7,7 @@ use Greg\AppInstaller\Events\ConfigAddEvent;
 use Greg\AppInstaller\Events\ConfigRemoveEvent;
 use Greg\AppInstaller\Events\ResourceAddEvent;
 use Greg\AppInstaller\Events\ResourceRemoveEvent;
+use Greg\AppView\Events\LoadViewerEvent;
 use Greg\Framework\ServiceProvider;
 use Greg\View\ViewBladeCompiler;
 use Greg\View\Viewer;
@@ -42,6 +43,8 @@ class ViewServiceProvider implements ServiceProvider
                     throw new \Exception('Unsupported compiler type `' . $type . '` for `' . $extension . '` extension.');
                 });
             }
+
+            $app->event(new LoadViewerEvent($viewer));
 
             return $viewer;
         });
