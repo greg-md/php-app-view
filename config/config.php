@@ -6,7 +6,7 @@ return [
     'extensions' => [
         '.blade.php' => [
             'type' => 'blade',
-            'compilerPath' => __DIR__ . '/../storage/views'
+            'compilationPath' => __DIR__ . '/../storage/views'
         ],
     ],
 ];

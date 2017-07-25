@@ -37,7 +37,7 @@ class ViewServiceProvider implements ServiceProvider
                     $type = $compiler['type'] ?? null;
 
                     if ($type === 'blade') {
-                        return new ViewBladeCompiler($this->config('compilerPath'));
+                        return new ViewBladeCompiler($this->config('compilationPath'));
                     }
 
                     throw new \Exception('Unsupported compiler type `' . $type . '` for `' . $extension . '` extension.');
