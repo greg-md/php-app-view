@@ -30,14 +30,22 @@ class ViewServiceProvider implements ServiceProvider
         $this->app = $app;
 
         $app->inject(Viewer::class, function () use ($app) {
-            $viewer = new Viewer($app->config('path'));
+            $viewer = new Viewer($this->config('path'));
 
-            foreach ((array) $app->config('compilers') as $extension => $compiler) {
+            foreach ((array) $this->config('compilers') as $compiler) {
+                if (!($extension = $compiler['extension'] ?? null)) {
+                    throw new \Exception('Undefined extension for compiler.');
+                }
+
                 $viewer->addExtension($extension, function () use ($extension, $compiler) {
                     $type = $compiler['type'] ?? null;
 
                     if ($type === 'blade') {
-                        return new ViewBladeCompiler($this->config('compilationPath'));
+                        if (!($compilationPath = $compiler['compilationPath'] ?? null)) {
+                            throw new \Exception('Undefined compilation path for `' . $extension . '` extension.');
+                        }
+
+                        return new ViewBladeCompiler($compilationPath);
                     }
 
                     throw new \Exception('Unsupported compiler type `' . $type . '` for `' . $extension . '` extension.');
