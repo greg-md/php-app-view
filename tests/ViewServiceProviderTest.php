@@ -5,7 +5,6 @@ namespace Greg\AppView;
 use Greg\AppInstaller\Application;
 use Greg\AppView\Events\LoadViewerEvent;
 use Greg\Framework\ServiceProvider;
-use Greg\View\BladeCompiler;
 use Greg\View\ViewBladeCompiler;
 use Greg\View\Viewer;
 use PHPUnit\Framework\TestCase;
@@ -36,18 +35,17 @@ class ViewServiceProviderTest extends TestCase
 
                 'compilers' => [
                     [
-                        'extension' => '.blade.php',
-                        'type' => 'blade',
+                        'extension'       => '.blade.php',
+                        'type'            => 'blade',
                         'compilationPath' => __DIR__,
-                    ]
-                ]
-            ]
+                    ],
+                ],
+            ],
         ]);
 
         $serviceProvider->boot($app);
 
-        $app->listen(LoadViewerEvent::class, function() {
-
+        $app->listen(LoadViewerEvent::class, function () {
         });
 
         /** @var Viewer $viewer */
