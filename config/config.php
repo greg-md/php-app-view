@@ -3,7 +3,7 @@
 return [
     'path' => __DIR__ . '/../resources/views',
 
-    'extensions' => [
+    'compilers' => [
         [
             'extension' => '.blade.php',
             'type' => 'blade',

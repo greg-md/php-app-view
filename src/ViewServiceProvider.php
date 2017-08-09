@@ -14,7 +14,9 @@ use Greg\View\Viewer;
 
 class ViewServiceProvider implements ServiceProvider
 {
-    private const CONFIG_NAME = 'view';
+    const EXTENSION_BLADE = 'blade';
+
+    private const CONFIG_NAME = 'viewer';
 
     private const RESOURCE_NAME = 'views';
 
@@ -40,7 +42,7 @@ class ViewServiceProvider implements ServiceProvider
                 $viewer->addExtension($extension, function () use ($extension, $compiler) {
                     $type = $compiler['type'] ?? null;
 
-                    if ($type === 'blade') {
+                    if ($type === self::EXTENSION_BLADE) {
                         if (!($compilationPath = $compiler['compilationPath'] ?? null)) {
                             throw new \Exception('Undefined compilation path for `' . $extension . '` extension.');
                         }
