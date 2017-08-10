@@ -5,9 +5,9 @@ return [
 
     'compilers' => [
         [
-            'extension'       => '.blade.php',
-            'type'            => 'blade',
-            'compilationPath' => __DIR__ . '/../storage/views',
+            'extension'         => '.blade.php',
+            'type'              => 'blade',
+            'compilation_path'  => __DIR__ . '/../storage/views',
         ],
     ],
 ];

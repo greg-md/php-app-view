@@ -43,7 +43,7 @@ class ViewServiceProvider implements ServiceProvider
                     $type = $compiler['type'] ?? null;
 
                     if ($type === self::EXTENSION_BLADE) {
-                        if (!($compilationPath = $compiler['compilationPath'] ?? null)) {
+                        if (!($compilationPath = $compiler['compilation_path'] ?? null)) {
                             throw new \Exception('Undefined compilation path for `' . $extension . '` extension.');
                         }
 

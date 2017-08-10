@@ -35,9 +35,9 @@ class ViewServiceProviderTest extends TestCase
 
                 'compilers' => [
                     [
-                        'extension'       => '.blade.php',
-                        'type'            => 'blade',
-                        'compilationPath' => __DIR__,
+                        'extension'         => '.blade.php',
+                        'type'              => 'blade',
+                        'compilation_path'  => __DIR__,
                     ],
                 ],
             ],
