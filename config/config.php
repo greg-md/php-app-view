@@ -1,7 +1,9 @@
 <?php
 
 return [
-    'path' => __DIR__ . '/../resources/views',
+    'paths' => [
+        __DIR__ . '/../resources/views',
+    ],
 
     'compilers' => [
         [

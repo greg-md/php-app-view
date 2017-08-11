@@ -32,7 +32,7 @@ class ViewServiceProvider implements ServiceProvider
         $this->app = $app;
 
         $app->inject(Viewer::class, function () use ($app) {
-            $viewer = new Viewer($this->config('path'));
+            $viewer = new Viewer($this->config('paths'));
 
             foreach ((array) $this->config('compilers') as $compiler) {
                 if (!($extension = $compiler['extension'] ?? null)) {
