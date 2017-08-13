@@ -14,6 +14,13 @@ class LoadViewerEventTest extends TestCase
         $this->assertInstanceOf(LoadViewerEvent::class, $event);
     }
 
+    public function testCanGetViewer()
+    {
+        $event = new LoadViewerEvent($this->mockViewer());
+
+        $this->assertInstanceOf(Viewer::class, $event->viewer());
+    }
+
     private function mockViewer()
     {
         return $this->getMockBuilder(Viewer::class)
