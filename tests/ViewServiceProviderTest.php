@@ -30,8 +30,8 @@ class ViewServiceProviderTest extends TestCase
         $serviceProvider = new ViewServiceProvider();
 
         $app = new Application([
-            'view' => [
-                'path' => __DIR__,
+            'viewer' => [
+                'paths' => __DIR__,
 
                 'compilers' => [
                     [
@@ -62,6 +62,6 @@ class ViewServiceProviderTest extends TestCase
 
         $this->assertInstanceOf(ViewBladeCompiler::class, $bladeCompiler);
 
-        $this->assertEquals(__DIR__, $bladeCompiler->getCompilationPath());
+        $this->assertEquals(__DIR__, $bladeCompiler->compilationPath());
     }
 }
