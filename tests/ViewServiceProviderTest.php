@@ -84,7 +84,7 @@ class ViewServiceProviderTest extends TestCase
 
         $this->assertEquals(__DIR__, $bladeCompiler->compilationPath());
     }
-    
+
     public function testCanThrowExceptionIfExtensionIsNotDefined()
     {
         $serviceProvider = new ViewServiceProvider();
