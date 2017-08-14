@@ -197,14 +197,4 @@ class ViewServiceProviderTest extends TestCase
 
         $this->assertDirectoryNotExists(__DIR__ . '/app/resources/views');
     }
-
-    /**
-     * @return \PHPUnit_Framework_MockObject_MockObject|Application
-     */
-    private function mockApplication()
-    {
-        return $this->getMockBuilder(Application::class)
-            ->disableOriginalConstructor()
-            ->getMock();
-    }
 }
