@@ -9,6 +9,7 @@ use Greg\AppInstaller\Events\ResourceAddEvent;
 use Greg\AppInstaller\Events\ResourceRemoveEvent;
 use Greg\AppView\Events\LoadViewerEvent;
 use Greg\Framework\ServiceProvider;
+use Greg\Support\Dir;
 use Greg\View\ViewBladeCompiler;
 use Greg\View\Viewer;
 
@@ -47,6 +48,8 @@ class ViewServiceProvider implements ServiceProvider
                             throw new \Exception('Undefined compilation path for `' . $extension . '` extension.');
                         }
 
+                        Dir::make($compilationPath, true);
+
                         return new ViewBladeCompiler($compilationPath);
                     }
 
@@ -69,9 +72,9 @@ class ViewServiceProvider implements ServiceProvider
 
     public function uninstall(Application $app)
     {
-        $app->event(new ResourceRemoveEvent(self::RESOURCE_NAME));
-
         $app->event(new ConfigRemoveEvent(self::CONFIG_NAME));
+
+        $app->event(new ResourceRemoveEvent(self::RESOURCE_NAME));
     }
 
     private function config($name)
