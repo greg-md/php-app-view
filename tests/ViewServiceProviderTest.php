@@ -14,7 +14,7 @@ class ViewServiceProviderTest extends TestCase
 {
     private $rootPath = __DIR__ . '/app';
 
-    protected function setUp()
+    protected function setUp(): void
     {
         Dir::make($this->rootPath);
 
@@ -26,7 +26,7 @@ class ViewServiceProviderTest extends TestCase
         Dir::make($this->rootPath . '/storage');
     }
 
-    protected function tearDown()
+    protected function tearDown(): void
     {
         Dir::unlink($this->rootPath);
     }
@@ -73,9 +73,9 @@ class ViewServiceProviderTest extends TestCase
 
         $this->assertInstanceOf(Viewer::class, $viewer);
 
-        $this->assertArraySubset([__DIR__], $viewer->getPaths());
+        $this->assertEquals([__DIR__], $viewer->getPaths());
 
-        $this->assertArraySubset(['.blade.php'], $viewer->getCompilersExtensions());
+        $this->assertEquals(['.blade.php'], $viewer->getCompilersExtensions());
 
         /** @var ViewBladeCompiler $bladeCompiler */
         $bladeCompiler = $viewer->getCompiler('.blade.php');
